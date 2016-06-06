@@ -8,8 +8,8 @@ https://yourinstance.looker.com:19999/api-docs/index.html
 
 Used https://goswagger.io/ to generate.
 
-See documentation at
-https://godoc.org/github.com/abourget/looker/client
+See documentation entry point at
+https://godoc.org/github.com/abourget/looker
 
 WARN: this is API v3, it will not work with API v2.
 
@@ -19,7 +19,7 @@ Setting up your client
 
 Get the code and its dependencies:
 
-    go get -v github.com/abourget/looker/client
+    go get -v github.com/abourget/looker
 
 In your code, get a client:
 

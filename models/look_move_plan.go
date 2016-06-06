@@ -4,129 +4,65 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*LookMovePlan look move plan
 
 swagger:model LookMovePlan
 */
 type LookMovePlan struct {
-  
-  
-  /* looks to copy
 
-Read Only: true
- */
-LooksToCopy [] `json:"looks_to_copy,omitempty"`
+	/* looks to copy
 
-  
-  /* looks to move
+	Read Only: true
+	*/
+	LooksToCopy []LookBasic `json:"looks_to_copy,omitempty"`
 
-Read Only: true
- */
-LooksToMove [] `json:"looks_to_move,omitempty"`
+	/* looks to move
 
-  
-  
-  
+	Read Only: true
+	*/
+	LooksToMove []LookBasic `json:"looks_to_move,omitempty"`
 }
-
 
 // Validate validates this look move plan
 func (m *LookMovePlan) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  if err := m.validateLooksToCopy(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  if err := m.validateLooksToMove(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
+	if err := m.validateLooksToCopy(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if err := m.validateLooksToMove(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
 
 func (m *LookMovePlan) validateLooksToCopy(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.LooksToCopy) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.LooksToCopy) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
 
 func (m *LookMovePlan) validateLooksToMove(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.LooksToMove) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.LooksToMove) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-

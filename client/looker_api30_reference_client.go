@@ -49,8 +49,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *LookerAPI3
 
 	cli.Connection = connection.New(transport, formats)
 
-	cli.Dashboard = dashboard.New(transport, formats)
-
 	cli.Look = look.New(transport, formats)
 
 	cli.Project = project.New(transport, formats)

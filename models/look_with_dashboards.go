@@ -4,255 +4,131 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*LookWithDashboards look with dashboards
 
 swagger:model LookWithDashboards
 */
 type LookWithDashboards struct {
-  
-  
-  /* Dashboards
 
-Read Only: true
- */
-Dashboards [] `json:"dashboards,omitempty"`
+	/* Dashboards
 
-  
-  /* Description
- */
-Description string `json:"description,omitempty"`
+	Read Only: true
+	*/
+	Dashboards []DashboardBase `json:"dashboards,omitempty"`
 
-  
-  /* Embed Url
+	/* Description
+	 */
+	Description string `json:"description,omitempty"`
 
-Read Only: true
- */
-EmbedURL string `json:"embed_url,omitempty"`
+	/* Embed Url
 
-  
-  /* Excel File Url
+	Read Only: true
+	*/
+	EmbedURL string `json:"embed_url,omitempty"`
 
-Read Only: true
- */
-ExcelFileURL string `json:"excel_file_url,omitempty"`
+	/* Excel File Url
 
-  
-  /* Google Spreadsheet Formula
+	Read Only: true
+	*/
+	ExcelFileURL string `json:"excel_file_url,omitempty"`
 
-Read Only: true
- */
-GoogleSpreadsheetFormula string `json:"google_spreadsheet_formula,omitempty"`
+	/* Google Spreadsheet Formula
 
-  
-  /* Unique Id
+	Read Only: true
+	*/
+	GoogleSpreadsheetFormula string `json:"google_spreadsheet_formula,omitempty"`
 
-Read Only: true
- */
-ID int64 `json:"id,omitempty"`
+	/* Unique Id
 
-  
-  /* Model
+	Read Only: true
+	*/
+	ID int64 `json:"id,omitempty"`
 
-Read Only: true
- */
-Model string `json:"model,omitempty"`
+	/* Model
 
-  
-  /* Is Public
+	Read Only: true
+	*/
+	Model string `json:"model,omitempty"`
 
-Read Only: true
- */
-Public *bool `json:"public,omitempty"`
+	/* Is Public
 
-  
-  /* Public Slug
+	Read Only: true
+	*/
+	Public *bool `json:"public,omitempty"`
 
-Read Only: true
- */
-PublicSlug string `json:"public_slug,omitempty"`
+	/* Public Slug
 
-  
-  /* Public Url
+	Read Only: true
+	*/
+	PublicSlug string `json:"public_slug,omitempty"`
 
-Read Only: true
- */
-PublicURL string `json:"public_url,omitempty"`
+	/* Public Url
 
-  
-  /* Query Id
- */
-QueryID int64 `json:"query_id,omitempty"`
+	Read Only: true
+	*/
+	PublicURL string `json:"public_url,omitempty"`
 
-  
-  /* Short Url
+	/* Query Id
+	 */
+	QueryID int64 `json:"query_id,omitempty"`
 
-Read Only: true
- */
-ShortURL string `json:"short_url,omitempty"`
+	/* Short Url
 
-  
-  /* Space of this Look
+	Read Only: true
+	*/
+	ShortURL string `json:"short_url,omitempty"`
 
-Read Only: true
- */
-Space  `json:"space,omitempty"`
+	/* Space of this Look
 
-  
-  /* (Write-only) Space Id
- */
-SpaceID int64 `json:"space_id,omitempty"`
+	Read Only: true
+	*/
+	Space `json:"space,omitempty"`
 
-  
-  /* Look Title
- */
-Title string `json:"title,omitempty"`
+	/* (Write-only) Space Id
+	 */
+	SpaceID int64 `json:"space_id,omitempty"`
 
-  
-  /* User
+	/* Look Title
+	 */
+	Title string `json:"title,omitempty"`
 
-Read Only: true
- */
-User  `json:"user,omitempty"`
+	/* User
 
-  
-  /* (Write-only) User Id
- */
-UserID int64 `json:"user_id,omitempty"`
+	Read Only: true
+	*/
+	User `json:"user,omitempty"`
 
-  
-  
-  
+	/* (Write-only) User Id
+	 */
+	UserID int64 `json:"user_id,omitempty"`
 }
-
 
 // Validate validates this look with dashboards
 func (m *LookWithDashboards) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  if err := m.validateDashboards(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateDashboards(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
 
 func (m *LookWithDashboards) validateDashboards(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Dashboards) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Dashboards) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

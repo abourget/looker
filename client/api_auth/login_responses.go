@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/abourget/looker/models"
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -57,7 +58,7 @@ func NewLoginOK() *LoginOK {
 Access token with metadata.
 */
 type LoginOK struct {
-	Payload
+	Payload *models.AccessToken
 }
 
 func (o *LoginOK) Error() string {

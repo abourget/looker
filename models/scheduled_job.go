@@ -4,371 +4,197 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*ScheduledJob scheduled job
 
 swagger:model ScheduledJob
 */
 type ScheduledJob struct {
-  
-  
-  /* When the ScheduledJob started
 
-Read Only: true
- */
-CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
+	/* When the ScheduledJob started
 
-  
-  /* Vixie-Style crontab specification when to run
+	Read Only: true
+	*/
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
-Read Only: true
- */
-Crontab string `json:"crontab,omitempty"`
+	/* Vixie-Style crontab specification when to run
 
-  
-  /* Id of a dashboard
+	Read Only: true
+	*/
+	Crontab string `json:"crontab,omitempty"`
 
-Read Only: true
- */
-DashboardID int64 `json:"dashboard_id,omitempty"`
+	/* Id of a dashboard
 
-  
-  /* Used for caching
+	Read Only: true
+	*/
+	DashboardID int64 `json:"dashboard_id,omitempty"`
 
-Read Only: true
- */
-DataSignature string `json:"data_signature,omitempty"`
+	/* Used for caching
 
-  
-  /* Used for caching
+	Read Only: true
+	*/
+	DataSignature string `json:"data_signature,omitempty"`
 
-Read Only: true
- */
-DataSlug string `json:"data_slug,omitempty"`
+	/* Used for caching
 
-  
-  /* When the ScheduledJob finished
+	Read Only: true
+	*/
+	DataSlug string `json:"data_slug,omitempty"`
 
-Read Only: true
- */
-FinalizedAt strfmt.DateTime `json:"finalized_at,omitempty"`
+	/* When the ScheduledJob finished
 
-  
-  /* Unique Id
+	Read Only: true
+	*/
+	FinalizedAt strfmt.DateTime `json:"finalized_at,omitempty"`
 
-Read Only: true
- */
-ID int64 `json:"id,omitempty"`
+	/* Unique Id
 
-  
-  /* Id of a look
+	Read Only: true
+	*/
+	ID int64 `json:"id,omitempty"`
 
-Read Only: true
- */
-LookID int64 `json:"look_id,omitempty"`
+	/* Id of a look
 
-  
-  /* Url for the scheduled entity
+	Read Only: true
+	*/
+	LookID int64 `json:"look_id,omitempty"`
 
-Read Only: true
- */
-LookerURL string `json:"looker_url,omitempty"`
+	/* Url for the scheduled entity
 
-  
-  /* Id of a LookML dashboard
+	Read Only: true
+	*/
+	LookerURL string `json:"looker_url,omitempty"`
 
-Read Only: true
- */
-LookmlDashboardID string `json:"lookml_dashboard_id,omitempty"`
+	/* Id of a LookML dashboard
 
-  
-  /* Name
+	Read Only: true
+	*/
+	LookmlDashboardID string `json:"lookml_dashboard_id,omitempty"`
 
-Read Only: true
- */
-Name string `json:"name,omitempty"`
+	/* Name
 
-  
-  /* Delivery should occur if data have changed since the last run
+	Read Only: true
+	*/
+	Name string `json:"name,omitempty"`
 
-Read Only: true
- */
-RequireChange *bool `json:"require_change,omitempty"`
+	/* Delivery should occur if data have changed since the last run
 
-  
-  /* Delivery should occur if the dashboard look does not return results
+	Read Only: true
+	*/
+	RequireChange *bool `json:"require_change,omitempty"`
 
-Read Only: true
- */
-RequireNoResults *bool `json:"require_no_results,omitempty"`
+	/* Delivery should occur if the dashboard look does not return results
 
-  
-  /* Delivery should occur if running the dashboard or look returns results
+	Read Only: true
+	*/
+	RequireNoResults *bool `json:"require_no_results,omitempty"`
 
-Read Only: true
- */
-RequireResults *bool `json:"require_results,omitempty"`
+	/* Delivery should occur if running the dashboard or look returns results
 
-  
-  /* Whether the row limit was reached when running
+	Read Only: true
+	*/
+	RequireResults *bool `json:"require_results,omitempty"`
 
-Read Only: true
- */
-RowLimitReached string `json:"row_limit_reached,omitempty"`
+	/* Whether the row limit was reached when running
 
-  
-  /* Runtime in seconds
+	Read Only: true
+	*/
+	RowLimitReached string `json:"row_limit_reached,omitempty"`
 
-Read Only: true
- */
-Runtime int64 `json:"runtime,omitempty"`
+	/* Runtime in seconds
 
-  
-  /* Scheduled job destinations
+	Read Only: true
+	*/
+	Runtime int64 `json:"runtime,omitempty"`
 
-Read Only: true
- */
-ScheduledJobDestination [] `json:"scheduled_job_destination,omitempty"`
+	/* Scheduled job destinations
 
-  
-  /* Detailed information about the job stage
+	Read Only: true
+	*/
+	ScheduledJobDestination []ScheduledJobDestination `json:"scheduled_job_destination,omitempty"`
 
-Read Only: true
- */
-ScheduledJobStage [] `json:"scheduled_job_stage,omitempty"`
+	/* Detailed information about the job stage
 
-  
-  /* ScheduledPlan that initiated the ScheduledJob
+	Read Only: true
+	*/
+	ScheduledJobStage []ScheduledJobStage `json:"scheduled_job_stage,omitempty"`
 
-Read Only: true
- */
-ScheduledPlan  `json:"scheduled_plan,omitempty"`
+	/* ScheduledPlan that initiated the ScheduledJob
 
-  
-  /* Status of the job
+	Read Only: true
+	*/
+	ScheduledPlan `json:"scheduled_plan,omitempty"`
 
-Read Only: true
- */
-Status string `json:"status,omitempty"`
+	/* Status of the job
 
-  
-  /* Optional message describing status of the job
+	Read Only: true
+	*/
+	Status string `json:"status,omitempty"`
 
-Read Only: true
- */
-StatusDetail string `json:"status_detail,omitempty"`
+	/* Optional message describing status of the job
 
-  
-  /* Timezone for interpreting the specified crontab (default is Looker instance timezone)
+	Read Only: true
+	*/
+	StatusDetail string `json:"status_detail,omitempty"`
 
-Read Only: true
- */
-Timezone string `json:"timezone,omitempty"`
+	/* Timezone for interpreting the specified crontab (default is Looker instance timezone)
 
-  
-  /* Title
+	Read Only: true
+	*/
+	Timezone string `json:"timezone,omitempty"`
 
-Read Only: true
- */
-Title string `json:"title,omitempty"`
+	/* Title
 
-  
-  /* User who owns this ScheduledPlan
+	Read Only: true
+	*/
+	Title string `json:"title,omitempty"`
 
-Read Only: true
- */
-User  `json:"user,omitempty"`
+	/* User who owns this ScheduledPlan
 
-  
-  
-  
+	Read Only: true
+	*/
+	User `json:"user,omitempty"`
 }
-
 
 // Validate validates this scheduled job
 func (m *ScheduledJob) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  if err := m.validateScheduledJobDestination(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  if err := m.validateScheduledJobStage(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateScheduledJobDestination(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if err := m.validateScheduledJobStage(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 func (m *ScheduledJob) validateScheduledJobDestination(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.ScheduledJobDestination) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.ScheduledJobDestination) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
 
 func (m *ScheduledJob) validateScheduledJobStage(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.ScheduledJobStage) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.ScheduledJobStage) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

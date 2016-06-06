@@ -4,180 +4,91 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*Space space
 
 swagger:model Space
 */
 type Space struct {
-  
-  
-  /* User Id of Creator
 
-Read Only: true
- */
-CreatorID int64 `json:"creator_id,omitempty"`
+	/* User Id of Creator
 
-  
-  /* Dashboards
+	Read Only: true
+	*/
+	CreatorID int64 `json:"creator_id,omitempty"`
 
-Read Only: true
- */
-Dashboards [] `json:"dashboards,omitempty"`
+	/* Dashboards
 
-  
-  /* Unique Id
+	Read Only: true
+	*/
+	Dashboards []DashboardBase `json:"dashboards,omitempty"`
 
-Read Only: true
- */
-ID string `json:"id,omitempty"`
+	/* Unique Id
 
-  
-  /* Space is a user's personal space
- */
-IsPersonal bool `json:"is_personal,omitempty"`
+	Read Only: true
+	*/
+	ID string `json:"id,omitempty"`
 
-  
-  /* Looks
+	/* Space is a user's personal space
+	 */
+	IsPersonal bool `json:"is_personal,omitempty"`
 
-Read Only: true
- */
-Looks [] `json:"looks,omitempty"`
+	/* Looks
 
-  
-  /* Unique Name
+	Read Only: true
+	*/
+	Looks []LookWithDashboards `json:"looks,omitempty"`
 
-Read Only: true
- */
-Name string `json:"name,omitempty"`
+	/* Unique Name
 
-  
-  /* (Write-only) Id of Parent
- */
-ParentID int64 `json:"parent_id,omitempty"`
+	Read Only: true
+	*/
+	Name string `json:"name,omitempty"`
 
-  
-  
-  
+	/* (Write-only) Id of Parent
+	 */
+	ParentID int64 `json:"parent_id,omitempty"`
 }
-
 
 // Validate validates this space
 func (m *Space) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  
-  
-  if err := m.validateDashboards(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  if err := m.validateLooks(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateDashboards(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if err := m.validateLooks(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
-
-
 
 func (m *Space) validateDashboards(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Dashboards) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Dashboards) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
 
 func (m *Space) validateLooks(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Looks) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Looks) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

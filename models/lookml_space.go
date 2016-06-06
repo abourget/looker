@@ -4,131 +4,67 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*LookmlSpace lookml space
 
 swagger:model LookmlSpace
 */
 type LookmlSpace struct {
-  
-  
-  /* User Id of Creator
 
-Read Only: true
- */
-CreatorID int64 `json:"creator_id,omitempty"`
+	/* User Id of Creator
 
-  
-  /* Dashboards
+	Read Only: true
+	*/
+	CreatorID int64 `json:"creator_id,omitempty"`
 
-Read Only: true
- */
-Dashboards [] `json:"dashboards,omitempty"`
+	/* Dashboards
 
-  
-  /* Unique Id
+	Read Only: true
+	*/
+	Dashboards []DashboardBase `json:"dashboards,omitempty"`
 
-Read Only: true
- */
-ID int64 `json:"id,omitempty"`
+	/* Unique Id
 
-  
-  /* Space is a user's personal space
- */
-IsPersonal bool `json:"is_personal,omitempty"`
+	Read Only: true
+	*/
+	ID int64 `json:"id,omitempty"`
 
-  
-  /* Unique Name
+	/* Space is a user's personal space
+	 */
+	IsPersonal bool `json:"is_personal,omitempty"`
 
-Read Only: true
- */
-Name string `json:"name,omitempty"`
+	/* Unique Name
 
-  
-  
-  
+	Read Only: true
+	*/
+	Name string `json:"name,omitempty"`
 }
-
 
 // Validate validates this lookml space
 func (m *LookmlSpace) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  
-  
-  if err := m.validateDashboards(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateDashboards(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
-
-
 
 func (m *LookmlSpace) validateDashboards(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Dashboards) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Dashboards) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -4,111 +4,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*LDAPGroupRead l d a p group read
 
 swagger:model LDAPGroupRead
 */
 type LDAPGroupRead struct {
-  
-  
-  /* Name of group in LDAP
 
-Read Only: true
- */
-Name string `json:"name,omitempty"`
+	/* Name of group in LDAP
 
-  
-  /* Looker Roles
+	Read Only: true
+	*/
+	Name string `json:"name,omitempty"`
 
-Read Only: true
- */
-Roles [] `json:"roles,omitempty"`
+	/* Looker Roles
 
-  
-  /* Link to ldap config
+	Read Only: true
+	*/
+	Roles []Role `json:"roles,omitempty"`
 
-Read Only: true
- */
-URL strfmt.URI `json:"url,omitempty"`
+	/* Link to ldap config
 
-  
-  
-  
+	Read Only: true
+	*/
+	URL strfmt.URI `json:"url,omitempty"`
 }
-
 
 // Validate validates this l d a p group read
 func (m *LDAPGroupRead) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  
-  
-  if err := m.validateRoles(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
+	if err := m.validateRoles(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
-
-
 
 func (m *LDAPGroupRead) validateRoles(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Roles) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Roles) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-

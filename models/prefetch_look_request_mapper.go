@@ -4,144 +4,75 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*PrefetchLookRequestMapper prefetch look request mapper
 
 swagger:model PrefetchLookRequestMapper
 */
 type PrefetchLookRequestMapper struct {
-  
-  
-  /* Access filters to apply when running queries for prefetch.
 
-Read Only: true
- */
-AccessFilters [] `json:"access_filters,omitempty"`
+	/* Access filters to apply when running queries for prefetch.
 
-  
-  /* Number of seconds it took to compute results for prefetch.
+	Read Only: true
+	*/
+	AccessFilters []PrefetchAccessFilterValue `json:"access_filters,omitempty"`
 
-Read Only: true
- */
-ComputationTime float32 `json:"computation_time,omitempty"`
+	/* Number of seconds it took to compute results for prefetch.
 
-  
-  /* Time when prefetch was created.
+	Read Only: true
+	*/
+	ComputationTime float32 `json:"computation_time,omitempty"`
 
-Read Only: true
- */
-CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
+	/* Time when prefetch was created.
 
-  
-  /* Number of times prefetch has been accessed.
+	Read Only: true
+	*/
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
-Read Only: true
- */
-HitCount int64 `json:"hit_count,omitempty"`
+	/* Number of times prefetch has been accessed.
 
-  
-  /* Time when prefetch was last accessed.
+	Read Only: true
+	*/
+	HitCount int64 `json:"hit_count,omitempty"`
 
-Read Only: true
- */
-TouchedAt strfmt.DateTime `json:"touched_at,omitempty"`
+	/* Time when prefetch was last accessed.
 
-  
-  /* Number of seconds prefetch will live for.
+	Read Only: true
+	*/
+	TouchedAt strfmt.DateTime `json:"touched_at,omitempty"`
 
-Read Only: true
- */
-TTL int64 `json:"ttl,omitempty"`
+	/* Number of seconds prefetch will live for.
 
-  
-  
-  
+	Read Only: true
+	*/
+	TTL int64 `json:"ttl,omitempty"`
 }
-
 
 // Validate validates this prefetch look request mapper
 func (m *PrefetchLookRequestMapper) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  if err := m.validateAccessFilters(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateAccessFilters(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
 
 func (m *PrefetchLookRequestMapper) validateAccessFilters(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.AccessFilters) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.AccessFilters) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

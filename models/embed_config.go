@@ -4,136 +4,67 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*EmbedConfig embed config
 
 swagger:model EmbedConfig
 */
 type EmbedConfig struct {
-  
-  
-  /* List of domains to whitelist for embedding
- */
-DomainWhitelist []string `json:"domain_whitelist,omitempty"`
 
-  
-  /* Array of embed secrets
+	/* List of domains to whitelist for embedding
+	 */
+	DomainWhitelist []string `json:"domain_whitelist,omitempty"`
 
-Read Only: true
- */
-Secrets [] `json:"secrets,omitempty"`
+	/* Array of embed secrets
 
-  
-  /* Is SSO embedding enabled for this Looker
- */
-SsoAuthEnabled bool `json:"sso_auth_enabled,omitempty"`
+	Read Only: true
+	*/
+	Secrets []EmbedSecret `json:"secrets,omitempty"`
 
-  
-  
-  
+	/* Is SSO embedding enabled for this Looker
+	 */
+	SsoAuthEnabled bool `json:"sso_auth_enabled,omitempty"`
 }
-
 
 // Validate validates this embed config
 func (m *EmbedConfig) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  if err := m.validateDomainWhitelist(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  if err := m.validateSecrets(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
+	if err := m.validateDomainWhitelist(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if err := m.validateSecrets(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
 
 func (m *EmbedConfig) validateDomainWhitelist(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.DomainWhitelist) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.DomainWhitelist) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
 
 func (m *EmbedConfig) validateSecrets(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Secrets) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Secrets) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-

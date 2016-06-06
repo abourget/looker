@@ -4,350 +4,171 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-  strfmt "github.com/go-openapi/strfmt"
+	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
-  "github.com/go-openapi/errors"
-  "github.com/go-openapi/runtime"
-  "github.com/go-openapi/validate"
-  
-  
+	"github.com/go-openapi/errors"
 )
-
-
 
 /*Dashboard dashboard
 
 swagger:model Dashboard
 */
 type Dashboard struct {
-  
-  
-  /* Background color
- */
-BackgroundColor string `json:"background_color,omitempty"`
 
-  
-  /* Description
- */
-Description string `json:"description,omitempty"`
+	/* Background color
+	 */
+	BackgroundColor string `json:"background_color,omitempty"`
 
-  
-  /* Elements
+	/* Description
+	 */
+	Description string `json:"description,omitempty"`
 
-Read Only: true
- */
-Elements [] `json:"elements,omitempty"`
+	/* Elements
 
-  
-  /* Filters
- */
-Filters [] `json:"filters,omitempty"`
+	Read Only: true
+	*/
+	Elements []DashboardElements `json:"elements,omitempty"`
 
-  
-  /* Is Hidden
- */
-Hidden bool `json:"hidden,omitempty"`
+	/* Filters
+	 */
+	Filters []DashboardFilters `json:"filters,omitempty"`
 
-  
-  /* Unique Id
+	/* Is Hidden
+	 */
+	Hidden bool `json:"hidden,omitempty"`
 
-Read Only: true
- */
-ID string `json:"id,omitempty"`
+	/* Unique Id
 
-  
-  /* Layouts
+	Read Only: true
+	*/
+	ID string `json:"id,omitempty"`
 
-Read Only: true
- */
-Layouts [] `json:"layouts,omitempty"`
+	/* Layouts
 
-  
-  /* configuration option that governs how dashboard loading will happen.
- */
-LoadConfiguration string `json:"load_configuration,omitempty"`
+	Read Only: true
+	*/
+	Layouts []DashboardLayout `json:"layouts,omitempty"`
 
-  
-  /* Model
+	/* configuration option that governs how dashboard loading will happen.
+	 */
+	LoadConfiguration string `json:"load_configuration,omitempty"`
 
-Read Only: true
- */
-Model string `json:"model,omitempty"`
+	/* Model
 
-  
-  /* Is Read-only
+	Read Only: true
+	*/
+	Model string `json:"model,omitempty"`
 
-Read Only: true
- */
-Readonly *bool `json:"readonly,omitempty"`
+	/* Is Read-only
 
-  
-  /* Refresh Interval
- */
-RefreshInterval string `json:"refresh_interval,omitempty"`
+	Read Only: true
+	*/
+	Readonly *bool `json:"readonly,omitempty"`
 
-  
-  /* Refresh Interval as Integer
+	/* Refresh Interval
+	 */
+	RefreshInterval string `json:"refresh_interval,omitempty"`
 
-Read Only: true
- */
-RefreshIntervalToI int64 `json:"refresh_interval_to_i,omitempty"`
+	/* Refresh Interval as Integer
 
-  
-  /* Show filters bar
- */
-ShowFiltersBar bool `json:"show_filters_bar,omitempty"`
+	Read Only: true
+	*/
+	RefreshIntervalToI int64 `json:"refresh_interval_to_i,omitempty"`
 
-  
-  /* Show title
- */
-ShowTitle bool `json:"show_title,omitempty"`
+	/* Show filters bar
+	 */
+	ShowFiltersBar bool `json:"show_filters_bar,omitempty"`
 
-  
-  /* Space
+	/* Show title
+	 */
+	ShowTitle bool `json:"show_title,omitempty"`
 
-Read Only: true
- */
-Space  `json:"space,omitempty"`
+	/* Space
 
-  
-  /* (Write-only) Id of Space
- */
-SpaceID int64 `json:"space_id,omitempty"`
+	Read Only: true
+	*/
+	Space `json:"space,omitempty"`
 
-  
-  /* Color of text on text tiles
- */
-TextTileTextColor string `json:"text_tile_text_color,omitempty"`
+	/* (Write-only) Id of Space
+	 */
+	SpaceID int64 `json:"space_id,omitempty"`
 
-  
-  /* Tile background color
- */
-TileBackgroundColor string `json:"tile_background_color,omitempty"`
+	/* Color of text on text tiles
+	 */
+	TextTileTextColor string `json:"text_tile_text_color,omitempty"`
 
-  
-  /* Tile text color
- */
-TileTextColor string `json:"tile_text_color,omitempty"`
+	/* Tile background color
+	 */
+	TileBackgroundColor string `json:"tile_background_color,omitempty"`
 
-  
-  /* Look Title
- */
-Title string `json:"title,omitempty"`
+	/* Tile text color
+	 */
+	TileTextColor string `json:"tile_text_color,omitempty"`
 
-  
-  /* Title color
- */
-TitleColor string `json:"title_color,omitempty"`
+	/* Look Title
+	 */
+	Title string `json:"title,omitempty"`
 
-  
-  /* Id of User
+	/* Title color
+	 */
+	TitleColor string `json:"title_color,omitempty"`
 
-Read Only: true
- */
-UserID int64 `json:"user_id,omitempty"`
+	/* Id of User
 
-  
-  
-  
+	Read Only: true
+	*/
+	UserID int64 `json:"user_id,omitempty"`
 }
-
 
 // Validate validates this dashboard
 func (m *Dashboard) Validate(formats strfmt.Registry) error {
-  var res []error
-  
-  
+	var res []error
 
-  
-  
-  
-  
-  
-  
-  if err := m.validateElements(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  if err := m.validateFilters(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  if err := m.validateLayouts(formats); err != nil {
-    // prop
-    res = append(res, err)
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	if err := m.validateElements(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
-  if len(res) > 0 {
-    return errors.CompositeValidationError(res...)
-  }
-  return nil
+	if err := m.validateFilters(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateLayouts(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
 }
-
-
-
-
-
-
-
-
 
 func (m *Dashboard) validateElements(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Elements) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Elements) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
 
 func (m *Dashboard) validateFilters(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Filters) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Filters) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
 
 func (m *Dashboard) validateLayouts(formats strfmt.Registry) error {
-  
-  if swag.IsZero(m.Layouts) { // not required
-    return nil
-  }
-  
-  
 
+	if swag.IsZero(m.Layouts) { // not required
+		return nil
+	}
 
-
-
-
-
-
-
-
-
-
-  return nil
+	return nil
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
