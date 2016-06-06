@@ -24,16 +24,20 @@ Get the code and its dependencies:
 In your code, get a client:
 
 	import (
-        looker "github.com/abourget/looker/client"
-	    "github.com/abourget/looker/client/api_auth"
-        "github.com/go-openapi/strfmt"
+        "github.com/abourget/looker"
     )
 
     ...
 
-	lookerClient := looker.New(httptransport.New("your-shiny-instance.looker.com", "/api/3.0", []string{"https"}), strfmt.Default)
+	lookerClient := looker.New("your-shiny-instance.looker.com", nil)
 
 Then login and do stuff:
+
+	import (
+	    "github.com/abourget/looker/client/api_auth"
+    )
+
+    ...
 
 	ok, err := lookerClient.APIAuth.Login(&api_auth.LoginParams{
 		ClientID:     *myClientID,
