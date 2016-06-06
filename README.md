@@ -13,6 +13,11 @@ https://godoc.org/github.com/abourget/looker
 
 WARN: this is API v3, it will not work with API v2.
 
+WARNING: this repo does not actually work! The generated code needs
+much doesn't actually compile. I'll give this another run some other
+time.. if you manage to generate with `swagger generate client` in
+this directory, and compile the client, then let me know.
+
 
 Setting up your client
 ----------------------
